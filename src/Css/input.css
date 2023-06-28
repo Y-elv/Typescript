@@ -34,3 +34,34 @@
 
 
  }
+ .todos{
+   display: flex;
+   justify-content: space-evenly;
+   flex-wrap: wrap;
+   width: 90%;
+ }
+ .todos_single{
+   display: flex;
+   width: 29.5%;
+   border-radius: 5px;
+   padding: 20px;
+   margin-top: 15px;
+   background-color: aquamarine;
+  
+ }
+ .todos_singleText{
+   flex: 2;
+   padding: 5px;
+   border: none;
+ }
+ .todos_singleText:focus{
+outline: none;
+
+ }
+ .icon_holder{
+   display: flex;
+   gap: 0.5rem;
+ }
+ .editInput{
+  
+ }

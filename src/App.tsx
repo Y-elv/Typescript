@@ -3,6 +3,8 @@ import InputField from "./components/InputField.tsx";
 import React,{useState} from 'react';
 import './App.css'
 import { Todo } from "./model.ts";
+import Todolist from "./components/Todolist.tsx";
+
 
 // let name:string;
 // let age:number | string;
@@ -63,9 +65,11 @@ console.log(todos)
     handleAdd={handleAdd}
     />
   
-  {todos.map((t) => (
-  <li key={t.id}>{t.todo}</li>
-))}
+ 
+<Todolist
+todos={todos}
+setTodos={setTodos}
+/>
   </div>
 
     </>
