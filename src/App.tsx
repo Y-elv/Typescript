@@ -4,7 +4,7 @@ import React,{useState} from 'react';
 import './App.css'
 import { Todo } from "./model.ts";
 import Todolist from "./components/Todolist.tsx";
-
+import { DragDropContext } from 'react-beautiful-dnd'
 
 // let name:string;
 // let age:number | string;
@@ -40,7 +40,7 @@ import Todolist from "./components/Todolist.tsx";
 const App:React.FC=() =>{
  const [todo, setTodo]=useState<string |number >("")
 const [todos,setTodos]= useState<Todo[]>([])
-
+const [completedTodos,setCompletedTodos]=useState<Todo[]>([])
 
 const handleAdd =(e:React.FormEvent)=>{
   e.preventDefault();
@@ -56,8 +56,8 @@ const handleAdd =(e:React.FormEvent)=>{
 }
 console.log(todos)
   return (
-    <>
-  <div className="App">
+    <DragDropContext onDragEnd={()=>{}} >
+        <div className="App">
     <span className="heading">Todo list</span>
     <InputField 
     todo={todo}
@@ -69,11 +69,15 @@ console.log(todos)
 <Todolist
 todos={todos}
 setTodos={setTodos}
+completedTodos={completedTodos}
+setCompletedTodos={setCompletedTodos}
 />
 
   </div>
+    </DragDropContext>
 
-    </>
+
+    
   )
 }
 
