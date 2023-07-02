@@ -4,7 +4,7 @@ import React,{useState} from 'react';
 import './App.css'
 import { Todo } from "./model.ts";
 import Todolist from "./components/Todolist.tsx";
-import { DragDropContext } from 'react-beautiful-dnd'
+import { DragDropContext,DropResult  } from 'react-beautiful-dnd'
 
 // let name:string;
 // let age:number | string;
@@ -55,8 +55,24 @@ const handleAdd =(e:React.FormEvent)=>{
 
 }
 console.log(todos)
+
+const handleDragEnd = (result: DropResult) => {
+  const { source, destination } = result;
+
+  // Check if the destination is valid
+  if (!destination) {
+    return;
+  }
+
+  // Reorder the todos array based on the drag and drop result
+  const updatedTodos = Array.from(todos);
+  const [removed] = updatedTodos.splice(source.index, 1);
+  updatedTodos.splice(destination.index, 0, removed);
+
+  setTodos(updatedTodos);
+};
   return (
-    <DragDropContext onDragEnd={()=>{}} >
+    <DragDropContext onDragEnd={handleDragEnd} >
         <div className="App">
     <span className="heading">Todo list</span>
     <InputField 

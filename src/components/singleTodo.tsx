@@ -14,7 +14,7 @@ type props = {
 }
 const SingleTodo = ({ todo, todos, setTodos,index }: props) => {
     const [edit, setEdit] = useState<boolean>(false)
-    const [editTodo, setEditTodo] = useState<stringtring>(todo.todo)
+    const [editTodo, setEditTodo] = useState<string>(todo.todo)
     const handleDone = (id: number) => {
         setTodos(
             todos.map((todo) =>
@@ -46,7 +46,8 @@ inputRef.current?.focus();
 
             {
                 (provided)=>(
-                    <form className='todos_single'onSubmit={(e)=>handleEdit(e,todo.id)}
+                    <form className='todos_single'
+                    onSubmit={(e)=>handleEdit(e,todo.id)}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     ref={provided.innerRef}

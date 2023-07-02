@@ -12,7 +12,7 @@ setCompletedTodos: React.Dispatch<React.SetStateAction<Todo[]>>
 const Todolist:React.FC<props>=({todos,setTodos ,completedTodos,setCompletedTodos})=>{
     return(
         <div className="container">
-            <Droppable droppableId='TodosList'>
+            <Droppable droppableId='todos'>
             {
                 (provided)=>(
                     <div className='todos'ref={provided.innerRef}
@@ -36,7 +36,7 @@ const Todolist:React.FC<props>=({todos,setTodos ,completedTodos,setCompletedTodo
             }
           
             </Droppable>
-    <Droppable droppableId='TodosRemove'>
+    <Droppable droppableId='completedTodos'>
         {
             (provided)=>(
                 <div className='todos-remove'ref={provided.innerRef}
@@ -45,7 +45,7 @@ const Todolist:React.FC<props>=({todos,setTodos ,completedTodos,setCompletedTodo
                       <span className="todos__heading">
                         completed task 
                       </span>
-                     {todos.map((todo,index) => (
+                     {completedTodos.map((todo,index) => (
                         <SingleTodo
                         index={index}
                         key={todo.id}
